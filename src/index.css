@@ -1,0 +1,88 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/bricolage-grotesque/standard.css';
+@import '@fontsource/caveat-brush';
+
+/*
+  Marca da loja (marrom + laranja da fachada) com o vernáculo de pet shop de bairro:
+  cartaz amarelo escrito a pincel atômico e saquinho kraft de ração a granel.
+*/
+@theme {
+  --color-fundo: #faf7f3;
+  --color-papel: #ffffff;
+  --color-tinta: #3a1f16;
+  --color-cafe: #4a2a1e;
+  --color-laranja: #e8682b;
+  --color-laranja-escuro: #c9531b;
+  --color-cartaz: #ffe14a;
+  --color-marcador: #d2481a;
+  --color-kraft: #d9be93;
+  --color-pessego: #fbe4d4;
+
+  --font-sans: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-pincel: 'Caveat Brush', 'Comic Sans MS', cursive;
+
+  --animate-marquee: marquee 46s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-fundo text-tinta font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-cartaz text-tinta;
+  }
+  :focus-visible {
+    @apply outline-3 outline-offset-3 outline-marcador;
+  }
+}
+
+/* Títulos: Bricolage no tamanho óptico máximo, pesado e apertado */
+.titulo {
+  font-variation-settings: 'opsz' 96, 'wdth' 92;
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+/* Grão de papel sobre a página inteira */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Fita crepe segurando cartaz e polaroid */
+.fita {
+  position: absolute;
+  height: 1.6rem;
+  width: 5.5rem;
+  background: rgb(232 222 196 / 0.85);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}
