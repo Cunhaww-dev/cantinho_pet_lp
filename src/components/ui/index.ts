@@ -1,0 +1,5 @@
+export { Anotacao, SetaDesenhada } from './Anotacao'
+export { BotaoPedido } from './BotaoPedido'
+export { Cartaz } from './Cartaz'
+export { FotoColada } from './FotoColada'
+export * from './Icons'
