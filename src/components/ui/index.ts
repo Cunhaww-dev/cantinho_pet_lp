@@ -1,4 +1,4 @@
-export { Anotacao, SetaDesenhada } from './Anotacao'
+export { Anotacao } from './Anotacao'
 export { BotaoPedido } from './BotaoPedido'
 export { Cartaz } from './Cartaz'
 export { FotoColada } from './FotoColada'
