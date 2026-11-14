@@ -39,19 +39,22 @@ export function Visite() {
               {loja.telefone}
             </a>
           </Linha>
-          <div className="flex flex-wrap gap-3 border-t border-dashed border-tinta/25 pt-6">
+          {/* Uma linha só: no celular o botão do mapa encurta o texto e ocupa o espaço que sobra */}
+          <div className="flex items-center gap-2 border-t border-dashed border-tinta/25 pt-6 sm:gap-3">
             <a
               href={loja.mapsUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-laranja px-5 py-3 font-semibold text-papel transition-colors hover:bg-laranja-escuro"
+              className="inline-flex h-12 min-w-0 flex-1 items-center justify-center gap-2 rounded-full bg-laranja px-4 font-semibold whitespace-nowrap text-papel transition-colors hover:bg-laranja-escuro sm:flex-none sm:px-5"
             >
-              <Pin className="size-5" /> Abrir no Google Maps
+              <Pin className="hidden size-5 shrink-0 sm:block" />
+              <span className="sm:hidden">Ver no mapa</span>
+              <span className="hidden sm:inline">Abrir no Google Maps</span>
             </a>
-            <a href={loja.instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram" className="grid size-12 place-items-center rounded-full border-2 border-tinta transition-colors hover:bg-tinta hover:text-papel">
+            <a href={loja.instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram" className="grid size-12 shrink-0 place-items-center rounded-full border-2 border-tinta transition-colors hover:bg-tinta hover:text-papel">
               <Instagram className="size-5" />
             </a>
-            <a href={loja.facebookUrl} target="_blank" rel="noreferrer" aria-label="Facebook" className="grid size-12 place-items-center rounded-full border-2 border-tinta transition-colors hover:bg-tinta hover:text-papel">
+            <a href={loja.facebookUrl} target="_blank" rel="noreferrer" aria-label="Facebook" className="grid size-12 shrink-0 place-items-center rounded-full border-2 border-tinta transition-colors hover:bg-tinta hover:text-papel">
               <Facebook className="size-5" />
             </a>
           </div>
