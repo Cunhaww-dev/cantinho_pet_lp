@@ -18,6 +18,23 @@ export function Marca({ className = '' }: { className?: string }) {
 export function Header() {
   const rolou = usePassouDoTopo(24)
   const [aberto, setAberto] = useState(false)
+  // Fechar o menu no mesmo toque cancela a rolagem suave do link;
+  // então guardamos o destino e só rolamos quando o menu terminar de fechar.
+  const [destino, setDestino] = useState<string | null>(null)
+
+  function irPara(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+    e.preventDefault()
+    setDestino(href)
+    setAberto(false)
+  }
+
+  function rolarAoFechar() {
+    if (!destino) return
+    const reduzir = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    document.querySelector(destino)?.scrollIntoView({ behavior: reduzir ? 'auto' : 'smooth' })
+    history.replaceState(null, '', destino)
+    setDestino(null)
+  }
 
   return (
     <header
@@ -63,7 +80,7 @@ export function Header() {
         </div>
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence onExitComplete={rolarAoFechar}>
         {aberto && (
           <motion.nav
             initial={{ height: 0 }}
@@ -75,7 +92,7 @@ export function Header() {
             <ul className="px-4 pb-6">
               {links.map((l) => (
                 <li key={l.href}>
-                  <a onClick={() => setAberto(false)} href={l.href} className="titulo block border-b border-tinta/10 py-3 text-3xl">
+                  <a onClick={(e) => irPara(e, l.href)} href={l.href} className="titulo block border-b border-tinta/10 py-3 text-3xl">
                     {l.label}
                   </a>
                 </li>

@@ -30,12 +30,12 @@ export function Visite() {
             Entregamos no bairro. Chama no WhatsApp pra combinar.
           </Linha>
           <Linha icone={<WhatsApp className="size-6" />} rotulo="WhatsApp">
-            <a href={whatsLink()} target="_blank" rel="noreferrer" className="underline decoration-tinta/30 underline-offset-4 hover:decoration-marcador">
+            <a href={whatsLink()} target="_blank" rel="noreferrer" className="inline-block py-1 underline decoration-tinta/30 underline-offset-4 hover:decoration-marcador">
               {loja.whatsapp}
             </a>
           </Linha>
           <Linha icone={<Telefone className="size-6" />} rotulo="Telefone">
-            <a href={loja.telefoneLink} className="underline decoration-tinta/30 underline-offset-4 hover:decoration-marcador">
+            <a href={loja.telefoneLink} className="inline-block py-1 underline decoration-tinta/30 underline-offset-4 hover:decoration-marcador">
               {loja.telefone}
             </a>
           </Linha>

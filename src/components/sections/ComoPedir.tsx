@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Anotacao, BotaoPedido, SetaDesenhada } from '../ui'
+import { BotaoPedido } from '../ui'
 
 const passos = [
   { t: 'Manda um oi', d: 'Conta no WhatsApp o que seu pet precisa. Vale mandar foto do pacote antigo.' },
@@ -70,13 +70,7 @@ export function ComoPedir() {
           </BotaoPedido>
         </div>
 
-        <div className="relative">
-          <Celular />
-          <div className="absolute -top-4 right-0 hidden -rotate-6 xl:block">
-            <Anotacao className="text-2xl">assim mesmo, ó</Anotacao>
-            <SetaDesenhada className="h-10 w-12 -scale-x-100 text-marcador" />
-          </div>
-        </div>
+        <Celular />
       </div>
     </section>
   )

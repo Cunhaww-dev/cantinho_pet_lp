@@ -12,14 +12,14 @@ function Coluna({ titulo, children }: { titulo: string; children: React.ReactNod
   return (
     <div>
       <p className="mb-4 text-sm text-papel/50">{titulo}</p>
-      <ul className="space-y-2.5 text-papel/85">{children}</ul>
+      <ul className="space-y-1 text-papel/85">{children}</ul>
     </div>
   )
 }
 
 const anoAtual = new Date().getFullYear()
 
-const link = 'underline decoration-papel/0 underline-offset-4 transition-colors hover:text-papel hover:decoration-cartaz'
+const link = 'inline-block py-1 underline decoration-papel/0 underline-offset-4 transition-colors hover:text-papel hover:decoration-cartaz'
 
 export function Rodape() {
   return (
@@ -34,7 +34,7 @@ export function Rodape() {
             <p className="font-pincel text-2xl leading-tight">
               Pedidos pelo zap
               <br />
-              <a href={whatsLink()} target="_blank" rel="noreferrer" className="text-marcador">
+              <a href={whatsLink()} target="_blank" rel="noreferrer" className="inline-block py-1 text-marcador">
                 {loja.whatsapp}
               </a>
             </p>
